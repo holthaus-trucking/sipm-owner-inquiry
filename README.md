@@ -1,6 +1,6 @@
 # SI Property Management — Owner Inquiry Form
 
-Public owner inquiry form for SI Property Management. Submissions are emailed to `owner@sirentnow.com` through FormSubmit.
+Public owner inquiry form for SI Property Management. Submissions are emailed to `owner@sirentnow.com` through Form.taxi (`https://form.taxi/s/ukz5915a`).
 
 ## Live URLs
 
@@ -9,7 +9,7 @@ Public owner inquiry form for SI Property Management. Submissions are emailed to
 - Placement special ad: https://sipm-owner-inquiry.onrender.com/?ad=placement
 - Thank-you page: https://sipm-owner-inquiry.onrender.com/thanks.html
 
-The first real submission sends an activation email to `owner@sirentnow.com`. Someone must click the confirmation link before leads will arrive.
+Leads are emailed to `owner@sirentnow.com` with subject `New SIPM Owner Lead`. The Form.taxi account email does not need a separate activation click. Hidden fields set `_next` to the thank-you page, `_replyto` to the visitor's email, and `_gotcha` as a honeypot.
 
 ## Form fields
 
