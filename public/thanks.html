@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07080b">
+  <meta name="robots" content="noindex">
+  <title>SI Property Management | Thank you</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --or: #ff6a00;
+      --or-dark: #e05a00;
+      --lt: #ffaa6e;
+      --bg: #07080b;
+      --card: #101218;
+      --ink: #ffffff;
+      --muted: #c9c9d1;
+      --line: rgba(255, 106, 0, 0.45);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--ink); }
+    body {
+      font-family: Poppins, system-ui, -apple-system, Segoe UI, sans-serif;
+      min-height: 100dvh;
+      background-image:
+        radial-gradient(circle at 90% 0%, rgba(255, 106, 0, 0.18), transparent 42%),
+        radial-gradient(circle at 8% 100%, rgba(255, 106, 0, 0.10), transparent 40%);
+      padding: 20px 18px 40px;
+    }
+    .wrap { width: 100%; max-width: 540px; margin: 0 auto; }
+    header.brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #0a0b10;
+      border: 1.5px solid var(--line);
+      border-radius: 18px;
+      padding: 10px 14px;
+      margin-bottom: 22px;
+    }
+    header.brand .logo-chip {
+      flex: 0 0 72px;
+      width: 72px;
+      height: 72px;
+      background: #fff;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+    header.brand img { width: 68px; height: 68px; object-fit: contain; }
+    header.brand .name { font-weight: 800; font-size: 15px; letter-spacing: 0.02em; line-height: 1.15; text-transform: uppercase; }
+    header.brand .name span { color: var(--or); }
+    header.brand .tag { color: var(--muted); font-size: 12px; font-weight: 500; margin-top: 3px; }
+
+    .card {
+      background: var(--card);
+      border: 1.5px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 22px;
+      text-align: center;
+    }
+    h1 { font-size: 1.6rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 10px; }
+    p { color: var(--muted); font-size: 1rem; line-height: 1.5; }
+    .phone {
+      font-weight: 900;
+      font-size: 1.7rem;
+      letter-spacing: 0.02em;
+      color: #fff;
+      margin: 18px 0 14px;
+    }
+    .actions { display: flex; gap: 10px; }
+    .actions a {
+      flex: 1;
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 14px;
+      padding: 14px 10px;
+    }
+    .actions a.call { background: var(--or); color: #fff; }
+    .actions a.text { background: #fff; color: #111; }
+    .back { display: inline-block; margin-top: 18px; color: var(--lt); font-weight: 600; font-size: 0.9rem; text-decoration: none; }
+    footer {
+      text-align: center;
+      color: #8b8b96;
+      font-size: 0.78rem;
+      margin-top: 22px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="brand">
+      <div class="logo-chip"><img src="logo.png" alt="SI Property Management logo"></div>
+      <div>
+        <div class="name">SI <span>Property Management</span></div>
+        <div class="tag">We manage. You earn more.</div>
+      </div>
+    </header>
+
+    <div class="card">
+      <h1>Thanks — we got your info.</h1>
+      <p>Someone from SI Property Management will follow up shortly. If you’d rather talk now, text or call us.</p>
+      <div class="phone">618-889-6473</div>
+      <div class="actions">
+        <a class="call" href="tel:6188896473">Call</a>
+        <a class="text" href="sms:6188896473">Text</a>
+      </div>
+      <a class="back" href="index.html">Back to the form</a>
+    </div>
+
+    <footer>SI Property Management</footer>
+  </div>
+</body>
+</html>

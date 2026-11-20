@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07080b">
+  <meta name="description" content="SI Property Management owner inquiry. We save you so much you can't afford to go anywhere else.">
+  <title>SI Property Management | Owner Inquiry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --or: #ff6a00;
+      --or-dark: #e05a00;
+      --lt: #ffaa6e;
+      --bg: #07080b;
+      --card: #101218;
+      --ink: #ffffff;
+      --muted: #c9c9d1;
+      --line: rgba(255, 106, 0, 0.45);
+      --field: #181a22;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--ink); }
+    body {
+      font-family: Poppins, system-ui, -apple-system, Segoe UI, sans-serif;
+      min-height: 100dvh;
+      background-image:
+        radial-gradient(circle at 90% 0%, rgba(255, 106, 0, 0.18), transparent 42%),
+        radial-gradient(circle at 8% 100%, rgba(255, 106, 0, 0.10), transparent 40%);
+      padding: 20px 18px 40px;
+    }
+    .wrap { width: 100%; max-width: 540px; margin: 0 auto; }
+    header.brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #0a0b10;
+      border: 1.5px solid var(--line);
+      border-radius: 18px;
+      padding: 10px 14px;
+      margin-bottom: 22px;
+    }
+    header.brand .logo-chip {
+      flex: 0 0 72px;
+      width: 72px;
+      height: 72px;
+      background: #fff;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+    header.brand img { width: 68px; height: 68px; object-fit: contain; }
+    header.brand .name { font-weight: 800; font-size: 15px; letter-spacing: 0.02em; line-height: 1.15; text-transform: uppercase; }
+    header.brand .name span { color: var(--or); }
+    header.brand .tag { color: var(--muted); font-size: 12px; font-weight: 500; margin-top: 3px; }
+
+    .hero { text-align: center; margin: 8px 0 18px; }
+    .kicker {
+      display: inline-block;
+      color: var(--lt);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--line);
+      background: rgba(40, 20, 8, 0.7);
+      border-radius: 999px;
+      padding: 6px 12px;
+      margin-bottom: 12px;
+    }
+    h1 { font-size: 1.45rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
+    .sub { color: var(--muted); font-size: 0.95rem; margin-top: 8px; line-height: 1.45; }
+
+    .proof {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin: 0 0 22px;
+      padding: 16px 16px 16px 14px;
+      background: var(--card);
+      border: 1.5px solid var(--line);
+      border-radius: 18px;
+    }
+    .proof li {
+      position: relative;
+      padding-left: 22px;
+      color: #ececf1;
+      font-size: 0.86rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+    .proof li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.35em;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--or);
+      box-shadow: inset 0 0 0 2.5px var(--or), inset 0 0 0 4px #101218;
+    }
+
+    form.card, .call-card {
+      background: var(--card);
+      border: 1.5px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 18px;
+    }
+    label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 6px; color: #eee; }
+    label .req { color: var(--or); }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea {
+      width: 100%;
+      font-family: inherit;
+      font-size: 16px; /* prevents iOS zoom */
+      color: var(--ink);
+      background: var(--field);
+      border: 1.5px solid #2a2d38;
+      border-radius: 12px;
+      padding: 14px 14px;
+      margin-bottom: 16px;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+    textarea { min-height: 80px; resize: vertical; }
+    input:focus, textarea:focus { border-color: var(--or); }
+    .row {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr 0.9fr;
+      gap: 0 12px;
+    }
+    .honey {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .submit {
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(180deg, #ff7a1a 0%, var(--or-dark) 100%);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-top: 4px;
+    }
+    .submit:active { transform: translateY(1px); }
+
+    .or-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 18px 0;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .or-row::before, .or-row::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #2a2d38;
+    }
+
+    .call-card { text-align: center; }
+    .call-card p.lead { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
+    .phone {
+      font-weight: 900;
+      font-size: 1.85rem;
+      letter-spacing: 0.02em;
+      color: #fff;
+      line-height: 1.1;
+      margin: 4px 0 14px;
+    }
+    .actions { display: flex; gap: 10px; }
+    .actions a {
+      flex: 1;
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 14px;
+      padding: 14px 10px;
+    }
+    .actions a.call { background: var(--or); color: #fff; }
+    .actions a.text { background: #fff; color: #111; }
+
+    footer {
+      text-align: center;
+      color: #8b8b96;
+      font-size: 0.78rem;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 380px) {
+      .row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="brand">
+      <div class="logo-chip"><img src="logo.png" alt="SI Property Management logo"></div>
+      <div>
+        <div class="name">SI <span>Property Management</span></div>
+        <div class="tag">We manage. You earn more.</div>
+      </div>
+    </header>
+
+    <div class="hero">
+      <div class="kicker" id="kicker">Owner inquiry</div>
+      <h1 id="headline">We save you so much you can't afford to go anywhere else.</h1>
+      <p class="sub" id="subhead">Tell us a few basics about your property and we’ll follow up. You can also text or call us right now.</p>
+    </div>
+
+    <ul class="proof" aria-label="Why SI Property Management">
+      <li>650+ units managed</li>
+      <li>Most units filled in 15 days</li>
+      <li>24/7 maintenance support</li>
+      <li>HVAC direct pricing</li>
+      <li>In-house plumbers and electricians on call daily</li>
+      <li>#1 largest Lowe’s customer in Southern Illinois</li>
+    </ul>
+
+    <form class="card" id="inquiry-form" method="post" action="https://formsubmit.co/owner@sirentnow.com">
+      <input type="hidden" name="_subject" value="New SIPM Owner Lead">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" id="next" value="">
+      <input type="hidden" name="_replyto" id="replyto" value="">
+      <input type="hidden" name="source" id="source" value="direct">
+      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <label for="name">Full name <span class="req">*</span></label>
+      <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name">
+
+      <label for="email">Email <span class="req">*</span></label>
+      <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@email.com">
+
+      <label for="phone">Phone <span class="req">*</span></label>
+      <input id="phone" name="phone" type="tel" autocomplete="tel" required inputmode="tel" placeholder="618-555-1234">
+
+      <label for="address">Property address <span class="req">*</span></label>
+      <textarea id="address" name="property_address" required placeholder="Street, city, and ZIP"></textarea>
+
+      <div class="row">
+        <div>
+          <label for="size">Size (sq ft)</label>
+          <input id="size" name="size_sqft" type="number" inputmode="numeric" min="0" step="1" placeholder="1200">
+        </div>
+        <div>
+          <label for="beds">Bedrooms</label>
+          <input id="beds" name="bedrooms" type="number" inputmode="numeric" min="0" step="1" placeholder="3">
+        </div>
+        <div>
+          <label for="baths">Bathrooms</label>
+          <input id="baths" name="bathrooms" type="number" inputmode="decimal" min="0" step="0.5" placeholder="2">
+        </div>
+      </div>
+
+      <button class="submit" type="submit">Send my info</button>
+    </form>
+
+    <div class="or-row">Or text / call</div>
+
+    <div class="call-card">
+      <p class="lead">Prefer to talk now?</p>
+      <div class="phone">618-889-6473</div>
+      <div class="actions">
+        <a class="call" href="tel:6188896473">Call</a>
+        <a class="text" href="sms:6188896473">Text</a>
+      </div>
+    </div>
+
+    <footer>SI Property Management</footer>
+  </div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var ad = (params.get("ad") || "").toLowerCase();
+      var source = document.getElementById("source");
+      var headline = document.getElementById("headline");
+      var subhead = document.getElementById("subhead");
+      var kicker = document.getElementById("kicker");
+      var variants = {
+        placement: {
+          source: "placement",
+          kicker: "$600 Placement Special",
+          title: "We save you so much you can't afford to go anywhere else.",
+          sub: "Tell us about the property you want us to fill with a qualified tenant.",
+          doc: "SI Property Management | $600 Tenant Placement"
+        },
+        full: {
+          source: "full",
+          kicker: "Full-Scale Management",
+          title: "We save you so much you can't afford to go anywhere else.",
+          sub: "Tell us about the property you want us to manage.",
+          doc: "SI Property Management | Full-Scale Management"
+        }
+      };
+      var v = variants[ad];
+      if (v) {
+        source.value = v.source;
+        kicker.textContent = v.kicker;
+        headline.textContent = v.title;
+        subhead.textContent = v.sub;
+        document.title = v.doc;
+      }
+
+      var form = document.getElementById("inquiry-form");
+      var next = document.getElementById("next");
+      var replyto = document.getElementById("replyto");
+      var email = document.getElementById("email");
+      next.value = new URL("thanks.html", window.location.href).toString();
+      form.addEventListener("submit", function () {
+        replyto.value = email.value || "";
+      });
+    })();
+  </script>
+</body>
+</html>
