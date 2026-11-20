@@ -143,60 +143,7 @@
       grid-template-columns: 1.2fr 0.9fr 0.9fr;
       gap: 0 12px;
     }
-    .hint {
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 500;
-      margin: -6px 0 16px;
-      line-height: 1.4;
-    }
     .type-section[hidden] { display: none !important; }
-    .property-block {
-      border: 1.5px solid #2a2d38;
-      border-radius: 14px;
-      padding: 14px 14px 0;
-      margin-bottom: 14px;
-      background: #0c0e14;
-    }
-    .property-block .block-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .property-block .block-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--lt);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .remove-btn {
-      background: none;
-      border: 0;
-      color: var(--muted);
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      padding: 0 0 0 8px;
-    }
-    .remove-btn:hover { color: #fff; }
-    .remove-btn[hidden] { display: none; }
-    .add-btn {
-      width: 100%;
-      background: transparent;
-      border: 1.5px dashed var(--line);
-      color: var(--lt);
-      font-family: inherit;
-      font-weight: 700;
-      font-size: 0.9rem;
-      border-radius: 12px;
-      padding: 12px 14px;
-      cursor: pointer;
-      margin: 0 0 8px;
-    }
-    .add-btn:hover { background: rgba(255, 106, 0, 0.08); }
     .honey {
       position: absolute;
       left: -10000px;
@@ -349,19 +296,15 @@
         </div>
       </div>
 
-      <div id="section-multi" class="type-section" hidden>
-        <p class="hint">Add each multifamily address and how many units are at that address.</p>
-        <div id="multi-properties"></div>
-        <button class="add-btn" type="button" id="add-property">+ Add another property</button>
-      </div>
+      <div id="section-portfolio" class="type-section" hidden>
+        <label for="property_addresses">Property address(es) <span class="req">*</span></label>
+        <textarea id="property_addresses" name="property_addresses" data-required placeholder="Street, city, and ZIP. List more than one if needed." disabled></textarea>
 
-      <div id="section-mixed" class="type-section" hidden>
-        <p class="hint">Tell us the total number of doors you own and the towns or counties they are in.</p>
-        <label for="total_doors">Total number of doors (units) <span class="req">*</span></label>
-        <input id="total_doors" name="total_doors" type="number" inputmode="numeric" min="1" step="1" data-required placeholder="e.g. 24" disabled>
+        <label for="total_units_or_doors">Total number of units/doors <span class="req">*</span></label>
+        <input id="total_units_or_doors" name="total_units_or_doors" type="number" inputmode="numeric" min="1" step="1" data-required placeholder="e.g. 24" disabled>
 
-        <label for="towns_or_counties">Towns or counties <span class="req">*</span></label>
-        <textarea id="towns_or_counties" name="towns_or_counties" data-required placeholder="e.g. Marion, Carbondale, Williamson County" disabled></textarea>
+        <label for="towns_or_counties">Town(s) or county(ies)</label>
+        <input id="towns_or_counties" name="towns_or_counties" type="text" placeholder="e.g. Marion, Carbondale, Williamson County" disabled>
       </div>
 
       <button class="submit" type="submit">Send my info</button>
@@ -380,19 +323,6 @@
 
     <footer>SI Property Management</footer>
   </div>
-
-  <template id="multi-property-template">
-    <div class="property-block">
-      <div class="block-head">
-        <span class="block-title">Property 1</span>
-        <button class="remove-btn" type="button" hidden>Remove</button>
-      </div>
-      <label data-for="address">Property address <span class="req">*</span></label>
-      <textarea data-field="address" data-required placeholder="Street, city, and ZIP"></textarea>
-      <label data-for="units">Number of units at this address <span class="req">*</span></label>
-      <input data-field="units" type="number" inputmode="numeric" min="1" step="1" data-required placeholder="e.g. 8">
-    </div>
-  </template>
 
   <script>
     (function () {
@@ -433,11 +363,7 @@
       var email = document.getElementById("email");
       var typeSelect = document.getElementById("property_type");
       var sectionSingle = document.getElementById("section-single");
-      var sectionMulti = document.getElementById("section-multi");
-      var sectionMixed = document.getElementById("section-mixed");
-      var multiList = document.getElementById("multi-properties");
-      var multiTemplate = document.getElementById("multi-property-template");
-      var addBtn = document.getElementById("add-property");
+      var sectionPortfolio = document.getElementById("section-portfolio");
 
       next.value = new URL("thanks.html", window.location.href).toString();
 
@@ -455,55 +381,14 @@
         }
       }
 
-      function refreshMultiBlocks() {
-        var blocks = multiList.querySelectorAll(".property-block");
-        for (var i = 0; i < blocks.length; i++) {
-          var n = i + 1;
-          var block = blocks[i];
-          block.querySelector(".block-title").textContent = "Property " + n;
-          var addr = block.querySelector('[data-field="address"]');
-          var units = block.querySelector('[data-field="units"]');
-          var addrLabel = block.querySelector('[data-for="address"]');
-          var unitsLabel = block.querySelector('[data-for="units"]');
-          addr.id = "mf_address_" + n;
-          addr.name = "property_" + n + "_address";
-          units.id = "mf_units_" + n;
-          units.name = "property_" + n + "_units";
-          addrLabel.setAttribute("for", addr.id);
-          unitsLabel.setAttribute("for", units.id);
-          var remove = block.querySelector(".remove-btn");
-          remove.hidden = blocks.length === 1;
-        }
-        setSectionState(sectionMulti, typeSelect.value === "Multifamily only");
-      }
-
-      function addMultiProperty() {
-        var node = multiTemplate.content.cloneNode(true);
-        multiList.appendChild(node);
-        refreshMultiBlocks();
-      }
-
       function showTypeSection() {
         var value = typeSelect.value;
         setSectionState(sectionSingle, value === "Single-family residential");
-        setSectionState(sectionMulti, value === "Multifamily only");
-        setSectionState(sectionMixed, value === "Both multifamily and single-family");
+        setSectionState(sectionPortfolio, value === "Multifamily only" || value === "Both multifamily and single-family");
       }
 
-      addMultiProperty();
       showTypeSection();
-
       typeSelect.addEventListener("change", showTypeSection);
-      addBtn.addEventListener("click", addMultiProperty);
-      multiList.addEventListener("click", function (event) {
-        var btn = event.target.closest(".remove-btn");
-        if (!btn) return;
-        var block = btn.closest(".property-block");
-        if (block && multiList.querySelectorAll(".property-block").length > 1) {
-          block.remove();
-          refreshMultiBlocks();
-        }
-      });
 
       form.addEventListener("submit", function () {
         replyto.value = email.value || "";

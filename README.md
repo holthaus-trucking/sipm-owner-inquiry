@@ -16,10 +16,9 @@ The first real submission sends an activation email to `owner@sirentnow.com`. So
 Full name, email, and phone are always required, plus a required dropdown: **What type of property do you own?**
 
 1. **Single-family residential** — property address (required), size (sq ft), bedrooms, bathrooms.
-2. **Multifamily only** — one or more properties, each with an address and unit count. Owners can add more addresses.
-3. **Both multifamily and single-family** — total number of doors (units) and the towns or counties.
+2. **Multifamily only** and **Combination of both** (multifamily and single-family) share the same fields: property address(es) (required), total number of units/doors (required), and town(s) or county(ies) (optional). The only difference is the `property_type` value from the dropdown.
 
-Only the visible section's fields are submitted. A `property_type` field records the choice. A hidden `source` field records `placement`, `full`, or `direct` from the `?ad=` query param.
+Only the visible section's fields are submitted. A hidden `source` field records `placement`, `full`, or `direct` from the `?ad=` query param.
 
 ## Redeploy
 
